@@ -1,6 +1,6 @@
 package objects.itemAttrs;
 
-public enum TypeOfAmor {
+public enum TypeOfArmor {
      HEADGEAR,
     BODY_AMOR,
     LEG_GEAR,

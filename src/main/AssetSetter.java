@@ -12,7 +12,7 @@ public class AssetSetter {
         this.gp = gp;
     }
 
-        public void setObjects(){
+           public void setObjects(){
             gp.obj[0] = new OBJ_Key();
             gp.obj[0].worldX = 23 * gp.tileSize;
             gp.obj[0].worldY = 7  * gp.tileSize;

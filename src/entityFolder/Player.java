@@ -27,8 +27,8 @@ public class Player extends Entity {
     solidArea.y       = 16;
     solidAreaDefaultX = solidArea.x;
     solidAreaDefaultY = solidArea.y;
-    solidArea.width   = 32;
-    solidArea.height  = 32;
+    solidArea.width   = 16;
+    solidArea.height  = 16;
     
     setDefaultValues();
     getPlayerImage();
@@ -139,7 +139,7 @@ public class Player extends Entity {
       switch(objectName){
         case "Key"  :     hasKey++;   gp.obj[i] = null;           break;
         case "Door" :  if(hasKey > 0){gp.obj[i] = null;hasKey--;} break;
-        // case "Boots":  speed += 3;    gp.obj[i] = null;           break;
+        case "Boots":  speed += 3;    gp.obj[i] = null;           break;
      
         
         

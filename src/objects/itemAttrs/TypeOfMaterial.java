@@ -9,6 +9,6 @@ public enum TypeOfMaterial {
     STEEL,
     FABRIC,
     WOOD,
-
+    DEFAULT
 
 }
