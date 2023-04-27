@@ -2,6 +2,8 @@ package entity;
 
 import main.GamePanel;
 
+import java.util.Random;
+
 public class NPC_OldMan extends Entity {
 
     public NPC_OldMan(GamePanel gp) {
@@ -24,5 +26,30 @@ public class NPC_OldMan extends Entity {
         down1   = setUp("/NPC/oldman_down_1");
         down2   = setUp("/NPC/oldman_down_2");
 
+    }
+
+    @Override
+    public void setAction() {
+
+        actionLockCounter++;
+
+        if (actionLockCounter == 120) {
+            Random random = new Random();
+            int i = random.nextInt(100) + 1; // pick a number between 1 and 100
+
+            if (i <= 25) {
+                direction = "up";
+            }
+            if (i > 25 & i <= 50) {
+                direction = "down";
+            }
+            if (i > 25 && i <= 75) {
+                direction = "left";
+            }
+            if (i > 75 && i <= 100) {
+                direction = "right";
+            }
+            actionLockCounter = 0;
+        }
     }
 }

@@ -17,15 +17,44 @@ public abstract class Entity {
   public String direction;
   public int spriteCounter = 0;
   public int spriteNum = 1;
-  public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
+  public Rectangle solidArea = new Rectangle(0, 0, 32, 32);
   public int solidAreaDefaultX;
   public int solidAreaDefaultY;
   public boolean collisionOn = false;
+  public int actionLockCounter = 0;
 
   public Entity(GamePanel gp) {
     this.gp = gp;
   }
 
+  public void setAction() {}
+  public void update() {
+    setAction();
+    collisionOn = false;
+    gp.cChecker.checkTile(this);
+    gp.cChecker.checkObject(this, false);
+    gp.cChecker.checkPlayer(this);
+
+    // IF COLLISION IS FALSE, PLAYER CAN MOVE
+    if (!collisionOn) {
+      switch(direction) {
+        case "up" -> worldY -= speed;
+        case "down" -> worldY += speed;
+        case "left" -> worldX -= speed;
+        case "right" -> worldX += speed;
+      }
+    }
+
+    spriteCounter++;
+    if (spriteCounter > 10) {
+      if (spriteNum == 1) {
+        spriteNum = 2;
+      } else if (spriteNum == 2) {
+        spriteNum = 1;
+      }
+      spriteCounter = 0;
+    }
+  }
   public void draw(Graphics2D g2, GamePanel gp){
 
     BufferedImage image = null;

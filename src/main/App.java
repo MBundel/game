@@ -12,7 +12,6 @@ public class App {
         window.add(gamePanel);
 
         window.pack();
-
         
         window.setLocationRelativeTo(null);
         window.setVisible(true);
