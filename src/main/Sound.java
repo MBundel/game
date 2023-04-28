@@ -12,7 +12,7 @@ public class Sound {
 
     public Sound(){
 
-        soundURL[0] = getClass().getResource("/sound/BlueBoyAdventure.wav");
+        soundURL[0] = getClass().getResource("/sound/linkToThePast.wav");
         soundURL[1] = getClass().getResource("/sound/coin.wav");
         soundURL[2] = getClass().getResource("/sound/powerup.wav");
         soundURL[3] = getClass().getResource("/sound/unlock.wav");
@@ -25,19 +25,16 @@ public class Sound {
             clip = AudioSystem.getClip();
             clip.open(ais);
         } catch (Exception e){
-
+            e.printStackTrace();
         }
     }
     public void  play(){
         clip.start();
-    };
+    }
     public void  loop(){
         clip.loop(Clip.LOOP_CONTINUOUSLY);
-    };
+    }
     public void  stop(){
         clip.stop();
-    };
-
-
-
+    }
 }
