@@ -11,7 +11,6 @@ import main.UtilityTool;
 public class Player extends Entity {
 
     KeyHandler keyH;
-
     public final int screenX;
     public final int screenY;
     public int numOfKeys = 0;
@@ -37,14 +36,14 @@ public class Player extends Entity {
 
     public void getPlayerImage() {
 
-        up1     = setUp("/player/boy_up_1");
-        up2     = setUp("/player/boy_up_2");
-        down1   = setUp("/player/boy_down_1");
-        down2   = setUp("/player/boy_down_2");
-        left1   = setUp("/player/boy_left_1");
-        left2   = setUp("/player/boy_left_2");
-        right1  = setUp("/player/boy_right_1");
-        right2  = setUp("/player/boy_right_2");
+        up1     = setUp("/player/link_up_1");
+        up2     = setUp("/player/link_up_2");
+        down1   = setUp("/player/link_down_1");
+        down2   = setUp("/player/link_down_2");
+        left1   = setUp("/player/link_left_1");
+        left2   = setUp("/player/link_left_2");
+        right1  = setUp("/player/link_right_1");
+        right2  = setUp("/player/link_right_2");
 
     }
 
@@ -116,8 +115,13 @@ public class Player extends Entity {
     private void interactNPC(int i) {
 
         if (i != 999) {
-            System.out.println("you are hitting an NPC!");
+
+            if (gp.keyH.enterPressed) {
+                gp.gameState = gp.dialogueState;
+                gp.npc[i].speak();
+            }
         }
+        gp.keyH.enterPressed = false;
     }
 
     public void pickUpObject(int i) {

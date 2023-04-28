@@ -12,6 +12,7 @@ public class NPC_OldMan extends Entity {
         direction = "down";
         speed = 1;
         getImage();
+        setDialogue();
 
     }
 
@@ -26,6 +27,14 @@ public class NPC_OldMan extends Entity {
         down1   = setUp("/NPC/oldman_down_1");
         down2   = setUp("/NPC/oldman_down_2");
 
+    }
+
+    public void setDialogue() {
+
+        dialogues[0] = "Hello, young man.";
+        dialogues[1] = "I've lost more keys\nthan you will ever find.";
+        dialogues[2] = "Back when I was banging we\nused the word \"faggot\" a lot!";
+        dialogues[3] = "I need a dollar, baby,\na dollar is what I need ♬";
     }
 
     @Override
@@ -46,10 +55,18 @@ public class NPC_OldMan extends Entity {
             if (i > 25 && i <= 75) {
                 direction = "left";
             }
-            if (i > 75 && i <= 100) {
+            if (i > 75) {
                 direction = "right";
             }
             actionLockCounter = 0;
         }
+    }
+
+    @Override
+    // do character-specific stuff, like saying sth else if the player
+    // is in possession of a special artefact
+    public void speak() {
+
+        super.speak();
     }
 }
