@@ -11,7 +11,6 @@ import main.UtilityTool;
 public class Player extends Entity {
 
     KeyHandler keyH;
-
     public final int screenX;
     public final int screenY;
     public int numOfKeys = 0;
@@ -116,7 +115,8 @@ public class Player extends Entity {
     private void interactNPC(int i) {
 
         if (i != 999) {
-            System.out.println("you are hitting an NPC!");
+            gp.gameState = gp.dialogueState;
+            gp.npc[i].speak();
         }
     }
 

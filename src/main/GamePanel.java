@@ -11,7 +11,7 @@ import objects.SuperObject;
 import tiles.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
-    
+
     final int originalTileSize = 16; // 16 x 16
     final int scale = 3 ; 
 
@@ -30,7 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     //SYSTEM
     TileManager tileM = new TileManager(this);
-    KeyHandler keyH = new KeyHandler();
+    KeyHandler keyH = new KeyHandler(this);
     Sound music = new Sound();
     Sound sound = new Sound();
     Thread gameThread;
@@ -62,7 +62,9 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame(){
         aSetter.setObjects();
         aSetter.setNPC();
+        gameState = playState;
         playMusic(0);
+        stopMusic();
     }
 
 public void startGameThread(){
@@ -92,12 +94,21 @@ public void startGameThread(){
     }
 
     public void update(){
-        player.update();
-        for (int i = 0; i < npc.length; i++) {
-            if (npc[i] != null) {
-                npc[i].update();
+
+        // player and other entities (npcs and monsters)
+        // can't move when the game is on pause
+        if (gameState == playState) {
+            player.update();
+            for (int i = 0; i < npc.length; i++) {
+                if (npc[i] != null) {
+                    npc[i].update();
+                }
             }
         }
+        if (gameState == pauseState) {
+            // do nothing
+        }
+
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -142,15 +153,5 @@ public void startGameThread(){
        sound.setFile(i);
        sound.play();
     }
-
-
-
-
-
-
-
-
-
-
 
 }

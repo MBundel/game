@@ -17,11 +17,12 @@ public abstract class Entity {
   public String direction;
   public int spriteCounter = 0;
   public int spriteNum = 1;
-  public Rectangle solidArea = new Rectangle(0, 0, 32, 32);
+  public Rectangle solidArea = new Rectangle(0, 0, 24, 24);
   public int solidAreaDefaultX;
   public int solidAreaDefaultY;
   public boolean collisionOn = false;
   public int actionLockCounter = 0;
+  String dialogues[] = new String[20];
 
   public Entity(GamePanel gp) {
     this.gp = gp;
@@ -99,5 +100,9 @@ public abstract class Entity {
       e.printStackTrace();
     }
     return image;
+  }
+
+  public void speak() {
+
   }
 }
