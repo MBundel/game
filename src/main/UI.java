@@ -88,8 +88,16 @@ public class UI {
         int y = gp.tileSize / 2;
         int width = gp.screenWidth - (gp.tileSize * 4);
         int height = gp.tileSize * 4;
-
         drawSubWindow(x, y, width, height);
+
+        // TEXT
+        x += gp.tileSize;
+        y += gp.tileSize;
+        g2.setFont(new Font("Purisa Bold", Font.PLAIN, 32));
+        for (String line : currentDialogue.split("\n")) {
+            g2.drawString(line, x, y);
+            y += 40;
+        }
     }
 
     public void drawSubWindow(int x, int y, int width, int height) {
