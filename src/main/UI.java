@@ -3,6 +3,7 @@ package main;
 import objects.OBJ_Key;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import objects.*;
 
 public class UI {
 
@@ -11,6 +12,7 @@ public class UI {
     GamePanel gp;
     Graphics2D g2;
     Font arial_40, arial_80B;
+    BufferedImage heart_full, heart_half, heart_blank;
     public boolean isMessageOn = false;
     public String message = "";
     private int messageCounter = 0;
@@ -23,6 +25,13 @@ public class UI {
         arial_80B = new Font("Arial", Font.BOLD, 80);
         OBJ_Key key = new OBJ_Key(gp);
         keyImage = key.image;
+
+        // CREATE HUD OBJECT
+        SuperObject heart = new OBJ_Heart(gp);
+        heart_full = heart.image;
+        heart_half = heart.image2;
+        heart_blank = heart.image3;
+
     }
 
     public void showMessage(String message) {
@@ -34,7 +43,9 @@ public class UI {
     public void draw(Graphics2D g2) {
         this.g2 = g2;
 
+        // PLAY STATE
         if (gp.gameState == gp.playState) {
+            drawPlayerLife();
 
             if (isGameFinished) {
                 g2.setFont(arial_80B);
@@ -53,8 +64,8 @@ public class UI {
                 g2.setColor(Color.white);
 
 
-                g2.drawImage(keyImage, gp.tileSize / 2, gp.tileSize / 2, gp.tileSize, gp.tileSize, null);
-                g2.drawString("x" + gp.player.numOfKeys, 74, 65);
+                g2.drawImage(keyImage, gp.tileSize / 2, gp.tileSize * 3 / 2, gp.tileSize, gp.tileSize, null);
+                g2.drawString("x" + gp.player.numOfKeys, 74, 115);
 
                 // MESSAGE
                 if (isMessageOn) {
@@ -72,13 +83,47 @@ public class UI {
 
         // PAUSE STATE
         if (gp.gameState == gp.pauseState) {
+            drawPlayerLife();
             drawPauseScreen();
         }
         // DIALOGUE STATE
         if (gp.gameState == gp.dialogueState) {
+            drawPlayerLife();
             drawDialogueScreen();
         }
 
+    }
+
+    private void drawPlayerLife() {
+
+        // gp.player.life = 1; // this is just to test whether life x ♡ are correctly displayed
+
+        int x = gp.tileSize / 2;
+        int y = gp.tileSize / 2;
+        int i = 0;
+
+        // DRAW MAX LIFE
+        while (i < gp.player.maxLife / 2) {
+            g2.drawImage(heart_blank, x, y, null);
+            i++;
+            x += gp.tileSize;
+        }
+
+        // RESET
+        x = gp.tileSize / 2;
+        y = gp.tileSize / 2;
+        i = 0;
+
+        // DRAW CURRENT LIFE
+        while (i < gp.player.life) {
+            g2.drawImage(heart_half, x, y, null);
+            i++;
+            if (i < gp.player.life) {
+                g2.drawImage(heart_full, x, y, null);
+            }
+            i++;
+            x += gp.tileSize;
+        }
     }
 
     private void drawDialogueScreen() {

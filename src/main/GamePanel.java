@@ -12,7 +12,6 @@ import tiles.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
 
-    
     final int originalTileSize = 16; // 16 x 16
     final int scale = 3 ; 
 
@@ -22,19 +21,16 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenWidth = tileSize * maxScreenCol; // 768 pixels
     public final int screenHeight = tileSize * maxScreenRow; // 576 pixels
 
-
     // WORLD SETTINGS
     public final int maxWorldCol    = 50;
     public final int maxWorldRow    = 50;
-
-    
 
     //FPS
     int FPS = 60;
 
     //SYSTEM
     TileManager tileM = new TileManager(this);
-    KeyHandler keyH = new KeyHandler(this);
+    public KeyHandler keyH = new KeyHandler(this);
     Sound music = new Sound();
     Sound sound = new Sound();
     Thread gameThread;
@@ -72,7 +68,6 @@ public class GamePanel extends JPanel implements Runnable {
         if(gameState != titleState) {
             playMusic(0);
         }
-
     }
 
 public void startGameThread(){
@@ -87,26 +82,16 @@ public void startGameThread(){
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
-        long timer = 0;
-        int drawCount = 0;
 
         while(gameThread != null){
             currentTime = System.nanoTime();
             delta += (currentTime - lastTime)/ drawInterval;
-            timer += (currentTime - lastTime);
             lastTime = currentTime;
 
             if(delta >= 1){
             update();
             repaint();
             delta--;
-            drawCount++;
-            }
-
-            if(timer >= 1_000_000_000){
-                System.out.println("FPS: " + drawCount);
-                drawCount = 0;
-                timer = 0;
             }
         }
     }
@@ -123,10 +108,8 @@ public void startGameThread(){
         if (gameState == pauseState){
 
         }
-
-
-       
     }
+
     public void paintComponent(Graphics g){
         super.paintComponent(g);
     
