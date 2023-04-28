@@ -115,13 +115,9 @@ public class Player extends Entity {
     private void interactNPC(int i) {
 
         if (i != 999) {
-
-            if (gp.keyH.enterPressed) {
-                gp.gameState = gp.dialogueState;
-                gp.npc[i].speak();
-            }
+            gp.gameState = gp.dialogueState;
+            gp.npc[i].speak();
         }
-        gp.keyH.enterPressed = false;
     }
 
     public void pickUpObject(int i) {

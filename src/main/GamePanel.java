@@ -30,7 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     //SYSTEM
     TileManager tileM = new TileManager(this);
-    public KeyHandler keyH = new KeyHandler(this);
+    KeyHandler keyH = new KeyHandler(this);
     Sound music = new Sound();
     Sound sound = new Sound();
     Thread gameThread;
@@ -64,7 +64,7 @@ public class GamePanel extends JPanel implements Runnable {
         aSetter.setNPC();
         gameState = playState;
         playMusic(0);
-        //stopMusic();
+        stopMusic();
     }
 
 public void startGameThread(){
