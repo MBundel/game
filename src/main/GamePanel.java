@@ -8,6 +8,7 @@ import javax.swing.plaf.DimensionUIResource;
 import entity.Entity;
 import entity.Player;
 import objects.SuperObject;
+import tiles.MapBuilder;
 import tiles.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -22,8 +23,10 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenHeight = tileSize * maxScreenRow; // 576 pixels
 
     // WORLD SETTINGS
-    public final int maxWorldCol    = 50;
-    public final int maxWorldRow    = 50;
+    public final int maxWorldCol    = 100;
+    public final int maxWorldRow    = 100;
+    // build new map
+    public MapBuilder map;
 
     //FPS
     int FPS = 60;
@@ -41,8 +44,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     //ENTITY AND OBJECT
     public Player player = new Player(this, keyH); 
-    public SuperObject obj[] = new SuperObject[10];
-    public Entity npc[] = new Entity[10];
+    public SuperObject[] obj = new SuperObject[10];
+    public Entity[] npc = new Entity[10];
 
     // GAME STATE
     public int gameState;
@@ -51,8 +54,9 @@ public class GamePanel extends JPanel implements Runnable {
     public final int dialogueState = 3;
     public  final int titleState = 0;
 
-    public GamePanel(){
+    public GamePanel() throws InterruptedException {
 
+        this.map = new MapBuilder();
         this.setPreferredSize(new DimensionUIResource(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
@@ -117,12 +121,9 @@ public void startGameThread(){
 
         //TITLE SCREEN
         if(gameState == titleState){
-
-
-
-
-
+            // do titleState stuff
         }
+
         //OTHERS
         else {
             //OTHERS
@@ -152,18 +153,13 @@ public void startGameThread(){
             g2.dispose();
         }
 
-
-
-
-
-
-
     }
     public  void playMusic(int i){
         music.setFile(i);
         music.play();
         music.loop();
     }
+
     public  void stopMusic(){
         music.stop();
     }
@@ -171,15 +167,4 @@ public void startGameThread(){
        sound.setFile(i);
        sound.play();
     }
-
-
-
-
-
-
-
-
-
-
-
 }

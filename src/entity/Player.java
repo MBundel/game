@@ -13,7 +13,7 @@ public class Player extends Entity {
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
-    public int numOfKeys = 0;
+    public int numOfKeys = 2;
 
     public Player(GamePanel gp, KeyHandler keyH) {
 
@@ -29,7 +29,7 @@ public class Player extends Entity {
 
     public void setDefaultValues() {
         worldX = gp.tileSize * 23;
-        worldY = gp.tileSize * 22;
+        worldY = gp.tileSize * 72;
         speed = 4;
         direction = "down";
 

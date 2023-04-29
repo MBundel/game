@@ -14,12 +14,13 @@ public class TileManager {
     public Tile[] tile;
     public int[][] mapTileNum;
 
-    public TileManager (GamePanel gp){
+    public TileManager (GamePanel gp) throws InterruptedException {
         this.gp = gp;
-        tile = new Tile[10];
+        tile = new Tile[20];
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
-        loadMap("/maps/maze4.txt");
+        loadMap("/maps/maze.txt");
+        System.out.println("done loading map");
     }
     
     public void getTileImage(){
@@ -44,6 +45,24 @@ public class TileManager {
             
             tile[5] = new Tile();
             tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/road00.png"));
+
+            tile[6] = new Tile();
+            tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/road07.png"));
+
+            tile[7] = new Tile();
+            tile[7].image = ImageIO.read(getClass().getResourceAsStream("/tiles/road02.png"));
+
+            tile[8] = new Tile();
+            tile[8].image = ImageIO.read(getClass().getResourceAsStream("/tiles/road05.png"));
+
+            tile[9] = new Tile();
+            tile[9].image = ImageIO.read(getClass().getResourceAsStream("/tiles/road04.png"));
+
+            tile[10] = new Tile();
+            tile[10].image = ImageIO.read(getClass().getResourceAsStream("/tiles/road11.png"));
+
+            tile[11] = new Tile();
+            tile[11].image = ImageIO.read(getClass().getResourceAsStream("/tiles/road06.png"));
         }
         catch (IOException e) {
             e.printStackTrace();

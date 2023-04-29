@@ -17,48 +17,63 @@ public class AssetSetter {
     public void setObjects() {
 
         // KEY
+        // hide two keys in the forest
         gp.obj[0] = new OBJ_Key(gp);
-        gp.obj[0].worldX = 23 * gp.tileSize;
-        gp.obj[0].worldY = 7 * gp.tileSize;
+        gp.obj[0].worldX = 52 * gp.tileSize;
+        gp.obj[0].worldY = 52 * gp.tileSize;
 
         gp.obj[1] = new OBJ_Key(gp);
-        gp.obj[1].worldX = 23 * gp.tileSize;
-        gp.obj[1].worldY = 40 * gp.tileSize;
+        gp.obj[1].worldX = 97 * gp.tileSize;
+        gp.obj[1].worldY = 97 * gp.tileSize;
 
+        // hide two keys along the river
         gp.obj[2] = new OBJ_Key(gp);
-        gp.obj[2].worldX = 38 * gp.tileSize;
-        gp.obj[2].worldY = 8 * gp.tileSize;
+        gp.obj[2].worldX = 97 * gp.tileSize;
+        gp.obj[2].worldY = 2 * gp.tileSize;
+
+        gp.obj[3] = new OBJ_Key(gp);
+        gp.obj[3].worldX = 52 * gp.tileSize;
+        gp.obj[3].worldY = 47 * gp.tileSize;
 
         // DOOR
-        gp.obj[3] = new OBJ_Door(gp);
-        gp.obj[3].worldX = 10 * gp.tileSize;
-        gp.obj[3].worldY = 11 * gp.tileSize;
-
         gp.obj[4] = new OBJ_Door(gp);
-        gp.obj[4].worldX = 8 * gp.tileSize;
-        gp.obj[4].worldY = 28 * gp.tileSize;
+        gp.obj[4].worldX = 22 * gp.tileSize;
+        gp.obj[4].worldY = 48 * gp.tileSize;
 
         gp.obj[5] = new OBJ_Door(gp);
-        gp.obj[5].worldX = 12 * gp.tileSize;
-        gp.obj[5].worldY = 22 * gp.tileSize;
+        gp.obj[5].worldX = 23 * gp.tileSize;
+        gp.obj[5].worldY = 48 * gp.tileSize;
+
+        gp.obj[6] = new OBJ_Door(gp);
+        gp.obj[6].worldX = 22 * gp.tileSize;
+        gp.obj[6].worldY = 49 * gp.tileSize;
+
+        gp.obj[7] = new OBJ_Door(gp);
+        gp.obj[7].worldX = 23 * gp.tileSize;
+        gp.obj[7].worldY = 49 * gp.tileSize;
 
         // CHEST
-        gp.obj[6] = new OBJ_Chest(gp);
-        gp.obj[6].worldX = 10 * gp.tileSize;
-        gp.obj[6].worldY = 7 * gp.tileSize;
+        // hide chest in the middle of walled-off area
+        gp.obj[8] = new OBJ_Chest(gp);
+        gp.obj[8].worldX = gp.map.chestx * gp.tileSize;
+        gp.obj[8].worldY = gp.map.chesty * gp.tileSize;
+        System.out.println("chest at row: " + gp.map.chestx + ", col: " + gp.map.chesty);
 
         // BOOTS
-        gp.obj[7] = new OBJ_Boots(gp);
-        gp.obj[7].worldX = 37 * gp.tileSize;
-        gp.obj[7].worldY = 42 * gp.tileSize;
+        // place boots close to player's starting position
+        gp.obj[9] = new OBJ_Boots(gp);
+        gp.obj[9].worldX = gp.map.bootsx * gp.tileSize;
+        gp.obj[9].worldY = gp.map.bootsy * gp.tileSize;
+        System.out.println("boots at row: " + gp.map.bootsx + ", col: " + gp.map.bootsy);
 
     }
 
     public void setNPC() {
 
+        // place old man close to doors to walled-off area
         gp.npc[0] = new NPC_OldMan(gp);
-        gp.npc[0].worldX = gp.tileSize * 21;
-        gp.npc[0].worldY = gp.tileSize * 21;
+        gp.npc[0].worldX = gp.tileSize * 23;
+        gp.npc[0].worldY = gp.tileSize * 50;
 
     }
 }

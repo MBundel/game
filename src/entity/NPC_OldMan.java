@@ -31,10 +31,11 @@ public class NPC_OldMan extends Entity {
 
     public void setDialogue() {
 
-        dialogues[0] = "Hello, young man.";
-        dialogues[1] = "I've lost more keys\nthan you will ever find.";
-        dialogues[2] = "Back when I was banging we\nused the word \"faggot\" a lot!";
-        dialogues[3] = "I need a dollar, baby,\na dollar is what I need ♬";
+        dialogues[0] = "Hello, young man!";
+        dialogues[1] = "You will have to find 4 keys,\n2 in the forest and\n2 along the river!";
+        dialogues[2] = "I've lost more keys\nthan you will ever find...";
+        dialogues[3] = "Oops I, did again... ♬";
+
     }
 
     @Override
