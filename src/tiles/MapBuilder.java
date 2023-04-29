@@ -2,6 +2,7 @@ package tiles;
 
 import java.io.FileNotFoundException;
 
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -66,7 +67,8 @@ public class MapBuilder {
         return concreteMaze;
     }
 
-    public static void mapBuilder(String[][] maze1, String[][] maze2, String[] maze3, int scale) {
+    public static void mapBuilder(String[][] maze1, String[][] maze2, String[] maze3) {
+        PrintWriter map = new PrintWriter("maps/maze.txt");
 
     }
 }

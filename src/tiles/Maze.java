@@ -3,23 +3,25 @@ package tiles;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Maze {
+
+    // fields
     public final int cols, rows;   // dimension of maze
-    public boolean[][] north;      // is there a wall to the north of the cell?
+    public boolean[][] north;      // true if there's a wall to the north of the cell
     public boolean[][] east;
     public boolean[][] south;
     public boolean[][] west;
     private boolean[][] visited;
 
+    // constructor
     public Maze(int cols, int rows) {
         this.cols = cols;
         this.rows = rows;
-        int height = 400;
-        int width = (int) Math.round(1.0 * height * cols / rows);
         init();
         generate(1, 1);
     }
 
     private void init() {
+
         // initialize border cells as already visited
         visited = new boolean[cols + 2][rows + 2];
         for (int col = 0; col < cols + 2; col++) {
@@ -54,7 +56,7 @@ public class Maze {
         while (!visited[col][row + 1] || !visited[col + 1][row]
                 || !visited[col][row - 1] || !visited[col - 1][row]) {
 
-            // pick random neighbor (could use Knuth's trick instead)
+            // pick random neighbor
             while (true) {
                 int r = ThreadLocalRandom.current().nextInt(0, 4);
                 if (r == 0 && !visited[col][row + 1]) {
