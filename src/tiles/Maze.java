@@ -1,20 +1,16 @@
 package tiles;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.concurrent.ThreadLocalRandom;
 
-import java.util.Arrays;
-
-public class MazeBuilder {
-    private final int cols, rows;   // dimension of maze
-    private boolean[][] north;      // is there a wall to the north of the cell?
-    private boolean[][] east;
-    private boolean[][] south;
-    private boolean[][] west;
+public class Maze {
+    public final int cols, rows;   // dimension of maze
+    public boolean[][] north;      // is there a wall to the north of the cell?
+    public boolean[][] east;
+    public boolean[][] south;
+    public boolean[][] west;
     private boolean[][] visited;
 
-    public MazeBuilder(int cols, int rows) {
+    public Maze(int cols, int rows) {
         this.cols = cols;
         this.rows = rows;
         int height = 400;
@@ -87,51 +83,5 @@ public class MazeBuilder {
                 }
             }
         }
-    }
-
-    // main method
-    public static void main(String[] args) throws FileNotFoundException {
-        int cols = 32;
-        int rows = 24;
-        MazeBuilder maze = new MazeBuilder(cols, rows);
-        String[][] map = new String[rows * 2 + 1][cols * 2 + 1];
-        for (String[] row : map) {
-            Arrays.fill(row, "4"); // trees
-        }
-
-        for (int i = 1; i < rows * 2; i++) {
-            for (int j = 1; j < cols * 2; j++) {
-                if (i % 2 != 0 && j % 2 != 0) {
-                    map[i][j] = "0"; // grass
-                }
-            }
-        }
-
-        // if there's no wall, replace tree with grass
-        for (int i = 1; i < rows * 2; i++) {
-            for (int j = 1; j < cols * 2; j++) {
-                if (i % 2 != 0 && j % 2 != 0) {
-                    int orgRow = (i + 1) / 2;
-                    int orgCol = (j + 1) / 2;
-                    if (!maze.east[orgCol][orgRow]) {
-                        map[i][j + 1] = "0";
-                    }
-                    if (!maze.south[orgCol][orgRow]) {
-                        map[i - 1][j] = "0";
-                    }
-                }
-            }
-        }
-
-        // write to file
-        PrintWriter out = new PrintWriter("/Users/tayoneumann/IdeaProjects/batavia/res/maps/maze.txt");
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[0].length; j++) {
-                out.print(map[i][j] + " ");
-            }
-            out.println();
-        }
-        out.close();
-
     }
 }
