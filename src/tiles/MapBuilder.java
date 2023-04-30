@@ -20,9 +20,9 @@ public class MapBuilder {
         // so a 12x12 maze returns a 50x50 tile map
         this.cols = 12;
         this.rows = 12;
-        Maze maze1 = new Maze(cols, rows);
-        Maze maze2 = new Maze(cols, rows);
-        Maze maze3 = new Maze(cols, rows);
+        Maze maze1 = new Maze(cols, rows, false);
+        Maze maze2 = new Maze(cols, rows, false);
+        Maze maze3 = new Maze(cols, rows, true);
 
         int[][] concreteMaze1 = mazeBuilder(maze1, "grass", "tree");
         int[][] concreteMaze2 = mazeBuilder(maze2, "road", "water");
@@ -88,6 +88,12 @@ public class MapBuilder {
                 map[i*2+1][j*2+1] = maze3[i][j];
             }
         }
+        // prison for the princess
+        for (int i = 18; i < 32; i++) {
+            for (int j = 18; j < 32; j++) {
+                map[i][j] = 0;
+            }
+        }
 
         // second quadrant on map (upper right)
         // 1 2
@@ -123,10 +129,11 @@ public class MapBuilder {
         }
 
         // add entrance to walled-off area
-        map[48][22] = 3;
         map[48][23] = 3;
-        map[49][22] = 3;
         map[49][23] = 3;
+        // add entrance to prison
+        map[16][23] = 3;
+        map[17][23] = 3;
 
         // add entrance to forest
         map[72][50] = 0;

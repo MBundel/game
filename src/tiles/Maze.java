@@ -11,11 +11,13 @@ public class Maze {
     public boolean[][] south;
     public boolean[][] west;
     private boolean[][] visited;
+    private boolean flag;
 
     // constructor
-    public Maze(int cols, int rows) {
+    public Maze(int cols, int rows, boolean flag) {
         this.cols = cols;
         this.rows = rows;
+        this.flag = flag;
         init();
         generate(1, 1);
     }
@@ -31,6 +33,13 @@ public class Maze {
         for (int row = 0; row < rows + 2; row++) {
             visited[0][row] = true;
             visited[cols + 1][row] = true;
+        }
+        if (flag) {
+            for (int y = 5; y < 9; y++) {
+                for (int x = 5; x < 9; x++) {
+                    visited[y][x] = true;
+                }
+            }
         }
 
         // initialize all walls as present

@@ -1,6 +1,7 @@
 package main;
 
 import entity.NPC_OldMan;
+import entity.Princess;
 import objects.OBJ_Boots;
 import objects.OBJ_Chest;
 import objects.OBJ_Door;
@@ -36,21 +37,23 @@ public class AssetSetter {
         gp.obj[3].worldY = 47 * gp.tileSize;
 
         // DOOR
+        // doors to walled-off area
         gp.obj[4] = new OBJ_Door(gp);
-        gp.obj[4].worldX = 22 * gp.tileSize;
+        gp.obj[4].worldX = 23 * gp.tileSize;
         gp.obj[4].worldY = 48 * gp.tileSize;
 
         gp.obj[5] = new OBJ_Door(gp);
         gp.obj[5].worldX = 23 * gp.tileSize;
-        gp.obj[5].worldY = 48 * gp.tileSize;
+        gp.obj[5].worldY = 49 * gp.tileSize;
 
+        // doors to prison cell
         gp.obj[6] = new OBJ_Door(gp);
-        gp.obj[6].worldX = 22 * gp.tileSize;
-        gp.obj[6].worldY = 49 * gp.tileSize;
+        gp.obj[6].worldX = 23 * gp.tileSize;
+        gp.obj[6].worldY = 16 * gp.tileSize;
 
         gp.obj[7] = new OBJ_Door(gp);
         gp.obj[7].worldX = 23 * gp.tileSize;
-        gp.obj[7].worldY = 49 * gp.tileSize;
+        gp.obj[7].worldY = 17 * gp.tileSize;
 
         // BOOTS
         // place boots close to player's starting position
@@ -74,6 +77,11 @@ public class AssetSetter {
         gp.npc[0] = new NPC_OldMan(gp);
         gp.npc[0].worldX = gp.tileSize * 23;
         gp.npc[0].worldY = gp.tileSize * 50;
+
+        // put princess in prison
+        gp.npc[1] = new Princess(gp);
+        gp.npc[1].worldX = gp.tileSize * 23;
+        gp.npc[1].worldY = gp.tileSize * 23;
 
     }
 }

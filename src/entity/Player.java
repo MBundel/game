@@ -13,7 +13,7 @@ public class Player extends Entity {
     KeyHandler keyH;
     public final int screenX;
     public final int screenY;
-    public int numOfKeys = 2;
+    public int numOfKeys = 4;
 
     public Player(GamePanel gp, KeyHandler keyH) {
 
