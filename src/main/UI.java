@@ -63,9 +63,11 @@ public class UI {
                 g2.setFont(arial_40);
                 g2.setColor(Color.white);
 
-
-                g2.drawImage(keyImage, gp.tileSize / 2, gp.tileSize * 3 / 2, gp.tileSize, gp.tileSize, null);
-                g2.drawString("x" + gp.player.numOfKeys, 74, 115);
+                int x = gp.tileSize / 2;
+                int y = gp.tileSize * 3 / 2;
+                g2.drawImage(keyImage, x, y, gp.tileSize, gp.tileSize, null);
+                g2.drawString("x" + gp.player.numOfKeys, x + gp.tileSize, y + gp.tileSize);
+                g2.drawString("row: " + (gp.player.worldY / gp.tileSize) + ", col: " + (gp.player.worldX / gp.tileSize), x, y + gp.tileSize * 2);
 
                 // MESSAGE
                 if (isMessageOn) {

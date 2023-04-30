@@ -2,10 +2,7 @@ package tiles;
 
 import main.GamePanel;
 import java.awt.*;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import javax.imageio.ImageIO;
 
 public class TileManager {
@@ -14,13 +11,11 @@ public class TileManager {
     public Tile[] tile;
     public int[][] mapTileNum;
 
-    public TileManager (GamePanel gp) throws InterruptedException {
+    public TileManager (GamePanel gp) {
         this.gp = gp;
         tile = new Tile[20];
-        mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
+        mapTileNum = gp.map.tileNum;
         getTileImage();
-        loadMap("/maps/maze.txt");
-        System.out.println("done loading map");
     }
     
     public void getTileImage(){
@@ -69,36 +64,6 @@ public class TileManager {
         }
     }
 
-    public void loadMap(String filePath){
-
-        try {
-            InputStream is = getClass().getResourceAsStream(filePath);
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
-            int col = 0;
-            int row = 0;
-
-            while (col < gp.maxWorldCol && row < gp.maxWorldRow) {
-                String line = br.readLine();
-
-                while(col < gp.maxWorldCol){
-                    String numbers[] = line.split (" ");
-                    int num = Integer.parseInt(numbers[col]);
-
-                    mapTileNum[col][row] = num;
-                    col++;
-                }
-                if(col == gp.maxWorldCol){
-                    col = 0;
-                    row++;
-                }
-            }
-            br.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public void draw(Graphics2D g2) {
 
         int worldCol = 0;
@@ -106,7 +71,7 @@ public class TileManager {
 
         while (worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow) {
 
-            int tileNum = mapTileNum[worldCol][worldRow];
+            int tileNum = mapTileNum[worldRow][worldCol];
 
             int worldX = worldCol * gp.tileSize;
             int worldY = worldRow * gp.tileSize;

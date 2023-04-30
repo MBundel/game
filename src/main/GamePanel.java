@@ -13,20 +13,20 @@ import tiles.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
 
-    final int originalTileSize = 16; // 16 x 16
-    final int scale = 3 ; 
+    final int originalTileSize = 32; // 16 x 16
+    final int scale = 2;
 
-    public final int tileSize = originalTileSize * scale; // 48 x 48
+    public final int tileSize = originalTileSize * scale; // 96 x 96
     public final int maxScreenCol = 16;
     public final int maxScreenRow = 12;
-    public final int screenWidth = tileSize * maxScreenCol; // 768 pixels
-    public final int screenHeight = tileSize * maxScreenRow; // 576 pixels
+    public final int screenWidth = tileSize * maxScreenCol; // 1576 pixels
+    public final int screenHeight = tileSize * maxScreenRow; // 1188 pixels
 
     // WORLD SETTINGS
     public final int maxWorldCol    = 100;
     public final int maxWorldRow    = 100;
     // build new map
-    public MapBuilder map;
+    public MapBuilder map = new MapBuilder();
 
     //FPS
     int FPS = 60;
@@ -52,11 +52,10 @@ public class GamePanel extends JPanel implements Runnable {
     public final int playState = 1;
     public final int pauseState = 2;
     public final int dialogueState = 3;
-    public  final int titleState = 0;
+    public final int titleState = 0;
 
-    public GamePanel() throws InterruptedException {
+    public GamePanel() {
 
-        this.map = new MapBuilder();
         this.setPreferredSize(new DimensionUIResource(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);

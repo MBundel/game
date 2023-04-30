@@ -26,38 +26,37 @@ public class CollisionChecker {
     switch(entity.direction) {
       case "up" -> {
         entityTopRow = (entityTop - entity.speed) / gp.tileSize;
-        tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
-        tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
+        tileNum1 = gp.tileM.mapTileNum[entityTopRow][entityLeftCol];
+        tileNum2 = gp.tileM.mapTileNum[entityTopRow][entityRightCol];
         if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
           entity.collisionOn = true;
         }
       }
       case "down" -> {
         entityBottomRow = (entityBottom + entity.speed) / gp.tileSize;
-        tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
-        tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
+        tileNum1 = gp.tileM.mapTileNum[entityBottomRow][entityLeftCol];
+        tileNum2 = gp.tileM.mapTileNum[entityBottomRow][entityRightCol];
         if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
           entity.collisionOn = true;
         }
       }
       case "left" -> {
         entityLeftCol = (entityLeft - entity.speed) / gp.tileSize;
-        tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
-        tileNum2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
+        tileNum1 = gp.tileM.mapTileNum[entityTopRow][entityLeftCol];
+        tileNum2 = gp.tileM.mapTileNum[entityBottomRow][entityLeftCol];
         if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
           entity.collisionOn = true;
         }
       }
       case "right" -> {
         entityRightCol = (entityRight + entity.speed) / gp.tileSize;
-        tileNum1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
-        tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
+        tileNum1 = gp.tileM.mapTileNum[entityTopRow][entityRightCol];
+        tileNum2 = gp.tileM.mapTileNum[entityBottomRow][entityRightCol];
         if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
           entity.collisionOn = true;
         }
       }
     }
-
   }
 
   public int checkObject(Entity entity, boolean player) {

@@ -52,19 +52,19 @@ public class AssetSetter {
         gp.obj[7].worldX = 23 * gp.tileSize;
         gp.obj[7].worldY = 49 * gp.tileSize;
 
-        // CHEST
-        // hide chest in the middle of walled-off area
-        gp.obj[8] = new OBJ_Chest(gp);
-        gp.obj[8].worldX = gp.map.chestx * gp.tileSize;
-        gp.obj[8].worldY = gp.map.chesty * gp.tileSize;
-        System.out.println("chest at row: " + gp.map.chestx + ", col: " + gp.map.chesty);
-
         // BOOTS
         // place boots close to player's starting position
         gp.obj[9] = new OBJ_Boots(gp);
         gp.obj[9].worldX = gp.map.bootsx * gp.tileSize;
         gp.obj[9].worldY = gp.map.bootsy * gp.tileSize;
-        System.out.println("boots at row: " + gp.map.bootsx + ", col: " + gp.map.bootsy);
+        System.out.println("boots at row: " + gp.map.bootsy + ", col: " + gp.map.bootsx);
+
+        // CHEST
+        // hide chest in the middle of walled-off area
+        gp.obj[8] = new OBJ_Chest(gp);
+        gp.obj[8].worldX = gp.map.chestx * gp.tileSize;
+        gp.obj[8].worldY = gp.map.chesty * gp.tileSize;
+        System.out.println("chest at row: " + gp.map.chesty + ", col: " + gp.map.chestx);
 
     }
 
