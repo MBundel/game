@@ -1,5 +1,6 @@
 package main;
 
+import entity.Link64;
 import entity.NPC_OldMan;
 import entity.Princess;
 import objects.OBJ_Boots;
@@ -82,6 +83,11 @@ public class AssetSetter {
         gp.npc[1] = new Princess(gp);
         gp.npc[1].worldX = gp.tileSize * 23;
         gp.npc[1].worldY = gp.tileSize * 23;
+
+        // put princess in prison
+        gp.npc[2] = new Link64(gp);
+        gp.npc[2].worldX = gp.tileSize * 23;
+        gp.npc[2].worldY = gp.tileSize * 25;
 
     }
 }
