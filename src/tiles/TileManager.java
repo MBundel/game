@@ -13,7 +13,7 @@ public class TileManager {
 
     public TileManager (GamePanel gp) {
         this.gp = gp;
-        tile = new Tile[20];
+        tile = new Tile[25];
         mapTileNum = gp.map.tileNum;
         getTileImage();
     }
@@ -82,6 +82,18 @@ public class TileManager {
 
             tile[19] = new Tile();
             tile[19].image = ImageIO.read(getClass().getResourceAsStream("/tiles/water09.png"));
+
+            tile[20] = new Tile();
+            tile[20].image = ImageIO.read(getClass().getResourceAsStream("/tiles/water10.png"));
+
+            tile[21] = new Tile();
+            tile[21].image = ImageIO.read(getClass().getResourceAsStream("/tiles/water11.png"));
+
+            tile[22] = new Tile();
+            tile[22].image = ImageIO.read(getClass().getResourceAsStream("/tiles/water12.png"));
+
+            tile[23] = new Tile();
+            tile[23].image = ImageIO.read(getClass().getResourceAsStream("/tiles/water13.png"));
         }
         catch (IOException e) {
             e.printStackTrace();

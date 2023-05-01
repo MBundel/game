@@ -28,8 +28,8 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-        worldX = gp.tileSize * 23;
-        worldY = gp.tileSize * 72; // 15 if you wanna be close to the prison doors
+        worldX = gp.tileSize * 30;
+        worldY = gp.tileSize * 65; // 15 if you wanna be close to the prison doors
         speed = 4;
         direction = "down";
 

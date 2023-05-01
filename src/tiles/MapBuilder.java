@@ -183,7 +183,10 @@ public class MapBuilder {
         map[62][21] = 0;
 
         drawPool(map, 60, 64, 25, 29);
-        drawPool(map, 61, 70, 35, 44);
+        drawPool(map, 60, 67, 31, 38);
+
+//        drawIsland(map, 63, 65, 37, 39);
+//        drawIsland(map, 66, 68, 40, 42);
 
         // draw an earth tile amid grass tiles to mark the teleporter
         map[70][25] = 3;
@@ -242,6 +245,41 @@ public class MapBuilder {
         // lower right
         map[rowEnd][colEnd] = 19;
     }
+
+    private static void drawIsland(int[][] map, int rowStart, int rowEnd, int colStart, int colEnd) {
+        // draw island
+        for (int row = rowStart + 1; row < rowEnd; row++) {
+            for (int col = colStart + 1; col < colEnd; col++) {
+                map[row][col] = 0;
+            }
+        }
+        // island top
+        for (int col = colStart + 1; col < colEnd; col++) {
+            map[rowStart][col] = 17;
+        }
+        // island bottom
+        for (int col = colStart + 1; col < colEnd; col++) {
+            map[rowEnd][col] = 12;
+        }
+        // island left
+        for (int row = rowStart + 1; row < rowEnd; row++) {
+            map[row][colStart] = 15;
+        }
+        // island right
+        for (int row = rowStart + 1; row < rowEnd; row++) {
+            map[row][colEnd] = 14;
+        }
+        // draw the 4 corners
+        // upper left
+        map[rowStart][colStart] = 20;
+        // upper right
+        map[rowStart][colEnd] = 21;
+        // lower left
+        map[rowEnd][colStart] = 22;
+        // lower right
+        map[rowEnd][colEnd] = 23;
+    }
+
 
     public int[] findHidingPlace(int[][] map, int rowLeftBoundary, int rowRightBoundary, int colLeftBoundary, int colRightBoundary, int corridor) {
         int y;

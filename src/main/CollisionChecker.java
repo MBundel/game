@@ -59,6 +59,56 @@ public class CollisionChecker {
     }
   }
 
+  // moving islands are colliding with anything BUT water
+  public void checkTileOnTile(Entity entity) {
+    int entityLeft = entity.worldX + entity.solidArea.x;
+    int entityRight = entity.worldX + entity.solidArea.x + entity.solidArea.width;
+    int entityTop = entity.worldY + entity.solidArea.y;
+    int entityBottom = entity.worldY + entity.solidArea.y + entity.solidArea.height;
+
+    int entityLeftCol = entityLeft / gp.tileSize;
+    int entityRightCol = entityRight / gp.tileSize;
+    int entityTopRow = entityTop / gp.tileSize;
+    int entityBottomRow = entityBottom / gp.tileSize;
+
+    int tileNum1, tileNum2;
+
+    switch(entity.direction) {
+      case "up" -> {
+        entityTopRow = (entityTop - entity.speed) / gp.tileSize;
+        tileNum1 = gp.tileM.mapTileNum[entityTopRow][entityLeftCol];
+        tileNum2 = gp.tileM.mapTileNum[entityTopRow][entityRightCol];
+        if (tileNum1 != 2 || tileNum2 != 2) {
+          entity.collisionOn = true;
+        }
+      }
+      case "down" -> {
+        entityBottomRow = (entityBottom + entity.speed) / gp.tileSize;
+        tileNum1 = gp.tileM.mapTileNum[entityBottomRow][entityLeftCol];
+        tileNum2 = gp.tileM.mapTileNum[entityBottomRow][entityRightCol];
+        if (tileNum1 != 2 || tileNum2 != 2) {
+          entity.collisionOn = true;
+        }
+      }
+      case "left" -> {
+        entityLeftCol = (entityLeft - entity.speed) / gp.tileSize;
+        tileNum1 = gp.tileM.mapTileNum[entityTopRow][entityLeftCol];
+        tileNum2 = gp.tileM.mapTileNum[entityBottomRow][entityLeftCol];
+        if (tileNum1 != 2 || tileNum2 != 2) {
+          entity.collisionOn = true;
+        }
+      }
+      case "right" -> {
+        entityRightCol = (entityRight + entity.speed) / gp.tileSize;
+        tileNum1 = gp.tileM.mapTileNum[entityTopRow][entityRightCol + 1];
+        tileNum2 = gp.tileM.mapTileNum[entityBottomRow][entityRightCol + 1];
+        if (tileNum1 != 2 || tileNum2 != 2) {
+          entity.collisionOn = true;
+        }
+      }
+    }
+  }
+
   public int checkObject(Entity entity, boolean player) {
     int index = 999;
 

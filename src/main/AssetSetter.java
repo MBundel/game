@@ -1,6 +1,7 @@
 package main;
 
 import entity.Link64;
+import entity.MovingTile;
 import entity.NPC_OldMan;
 import entity.Princess;
 import objects.OBJ_Boots;
@@ -84,10 +85,25 @@ public class AssetSetter {
         gp.npc[1].worldX = gp.tileSize * 23;
         gp.npc[1].worldY = gp.tileSize * 23;
 
-        // put princess in prison
+        // put Link in prison
         gp.npc[2] = new Link64(gp);
         gp.npc[2].worldX = gp.tileSize * 23;
         gp.npc[2].worldY = gp.tileSize * 25;
+
+        // place moving tile in pool
+        gp.npc[5] = new MovingTile(gp, false, 3);
+        gp.npc[5].worldX = gp.tileSize * 35;
+        gp.npc[5].worldY = gp.tileSize * 61;
+
+        // place moving tile in pool
+        gp.npc[4] = new MovingTile(gp, false, 2);
+        gp.npc[4].worldX = gp.tileSize * 35;
+        gp.npc[4].worldY = gp.tileSize * 63;
+
+        // place moving tile in pool
+        gp.npc[3] = new MovingTile(gp, false, 1);
+        gp.npc[3].worldX = gp.tileSize * 35;
+        gp.npc[3].worldY = gp.tileSize * 65;
 
     }
 }

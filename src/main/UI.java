@@ -140,7 +140,7 @@ public class UI {
         // TEXT
         x += gp.tileSize;
         y += gp.tileSize;
-        g2.setFont(new Font("Purisa Bold", Font.PLAIN, 32));
+        g2.setFont(new Font("Purisa Bold", Font.PLAIN, 28));
         for (String line : currentDialogue.split("\n")) {
             g2.drawString(line, x, y);
             y += 40;

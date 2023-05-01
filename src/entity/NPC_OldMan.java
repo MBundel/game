@@ -32,9 +32,9 @@ public class NPC_OldMan extends Entity {
     public void setDialogue() {
 
         dialogues[0] = "Hello, young man!";
-        dialogues[1] = "You will have to find 4 keys,\n2 in the forest and\n2 along the river!";
+        dialogues[1] = "To free the princess you will have to find 4 keys,\n2 in the forest and 2 along the river!";
         dialogues[2] = "No keys, no princess!";
-        dialogues[3] = "I've lost more keys\nthan you will ever find...";
+        dialogues[3] = "I've lost more keys than you will ever find...";
         dialogues[4] = "Oops I, did again... ♬";
 
     }
