@@ -77,7 +77,7 @@ public class AssetSetter {
         // place old man close to doors to walled-off area
         gp.npc[0] = new NPC_OldMan(gp);
         gp.npc[0].worldX = gp.tileSize * 23;
-        gp.npc[0].worldY = gp.tileSize * 50;
+        gp.npc[0].worldY = gp.tileSize * 55;
 
         // put princess in prison
         gp.npc[1] = new Princess(gp);

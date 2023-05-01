@@ -172,6 +172,22 @@ public class MapBuilder {
         map[73][23] = 7;
         map[74][21] = 4;
 
+        // draw a little grove with an entrance for our damage pit
+        for (int row = 60; row < 65; row++) {
+            for (int col = 17; col < 22; col++) {
+                map[row][col] = 4;
+            }
+        }
+        // entrance to grove
+        map[62][20] = 0;
+        map[62][21] = 0;
+
+        drawPool(map, 60, 64, 25, 29);
+        drawPool(map, 61, 70, 35, 44);
+
+        // draw an earth tile amid grass tiles to mark the teleporter
+        map[70][25] = 3;
+
         // hide chest
         int[] chestyx = findHidingPlace(map, 0, 50, 0, 50, 3);
         this.chesty = chestyx[0];
@@ -183,14 +199,48 @@ public class MapBuilder {
         this.bootsx = bootsyx[1];
 
         // save map
-        try {
-            writeToFile(map);
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            writeToFile(map);
+//        }
+//        catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
 
         return map;
+    }
+
+    private static void drawPool(int[][] map, int rowStart, int rowEnd, int colStart, int colEnd) {
+        // draw healing pool
+        for (int row = rowStart + 1; row < rowEnd; row++) {
+            for (int col = colStart + 1; col < colEnd; col++) {
+                map[row][col] = 2;
+            }
+        }
+        // healing pool top
+        for (int col = colStart + 1; col < colEnd; col++) {
+            map[rowStart][col] = 12;
+        }
+        // healing pool bottom
+        for (int col = colStart + 1; col < colEnd; col++) {
+            map[rowEnd][col] = 17;
+        }
+        // healing pool left
+        for (int row = rowStart + 1; row < rowEnd; row++) {
+            map[row][colStart] = 14;
+        }
+        // healing pool right
+        for (int row = rowStart + 1; row < rowEnd; row++) {
+            map[row][colEnd] = 15;
+        }
+        // draw the 4 corners
+        // upper left
+        map[rowStart][colStart] = 18;
+        // upper right
+        map[rowStart][colEnd] = 13;
+        // lower left
+        map[rowEnd][colStart] = 16;
+        // lower right
+        map[rowEnd][colEnd] = 19;
     }
 
     public int[] findHidingPlace(int[][] map, int rowLeftBoundary, int rowRightBoundary, int colLeftBoundary, int colRightBoundary, int corridor) {

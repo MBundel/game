@@ -29,7 +29,7 @@ public class Player extends Entity {
 
     public void setDefaultValues() {
         worldX = gp.tileSize * 23;
-        worldY = gp.tileSize * 15; // 72
+        worldY = gp.tileSize * 72; // 15 if you wanna be close to the prison doors
         speed = 4;
         direction = "down";
 
@@ -93,6 +93,10 @@ public class Player extends Entity {
             // CHECK NPC COLLISION
             int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
             interactNPC(npcIndex);
+
+            // CHECK EVENT
+            gp.eHandler.checkEvent();
+            gp.keyH.enterPressed = false;
             
             // IF COLLISION IS FALSE, PLAYER CAN MOVE
             if (!collisionOn) {
@@ -125,7 +129,6 @@ public class Player extends Entity {
                 gp.npc[i].speak();
             }
         }
-        gp.keyH.enterPressed = false;
     }
 
     public void pickUpObject(int i) {
