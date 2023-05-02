@@ -49,7 +49,7 @@ public class MovingTile extends Entity {
         setAction();
         collisionOn = false;
         gp.cChecker.checkTileOnTile(this);
-//        gp.cChecker.checkObject(this, false);
+//        gp.cChecker.checkEntity(this, gp.npc);
 //        gp.cChecker.checkPlayer(this);
 
         // IF COLLISION IS OFF, TILE CAN MOVE
@@ -74,16 +74,26 @@ public class MovingTile extends Entity {
                 worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
                 worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
 
-            BufferedImage image1 = setUp("/tiles/water10");
-            BufferedImage image2 = setUp("/tiles/water11");
-            BufferedImage image3 = setUp("/tiles/water12");
-            BufferedImage image4 = setUp("/tiles/water13");
+            BufferedImage image1 = setUp("/NPC/island/island_upperLeft");
+            BufferedImage image2 = setUp("/NPC/island/island_top");
+            BufferedImage image3 = setUp("/NPC/island/island_upperRight");
+            BufferedImage image4 = setUp("/NPC/island/island_left");
+            BufferedImage image5 = setUp("/NPC/island/island");
+            BufferedImage image6 = setUp("/NPC/island/island_right");
+            BufferedImage image7 = setUp("/NPC/island/island_lowerLeft");
+            BufferedImage image8 = setUp("/NPC/island/island_bottom");
+            BufferedImage image9 = setUp("/NPC/island/island_lowerRight");
 
             // this should be a loop drawing islands of varying size
             g2.drawImage(image1, screenX, screenY, gp.tileSize, gp.tileSize, null);
             g2.drawImage(image2, screenX + gp.tileSize, screenY, gp.tileSize, gp.tileSize, null);
-            g2.drawImage(image3, screenX, screenY + gp.tileSize, gp.tileSize, gp.tileSize, null);
-            g2.drawImage(image4, screenX + gp.tileSize, screenY + gp.tileSize, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(image3, screenX + gp.tileSize * 2, screenY, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(image4, screenX, screenY + gp.tileSize, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(image5, screenX + gp.tileSize, screenY + gp.tileSize, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(image6, screenX + gp.tileSize * 2, screenY + gp.tileSize, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(image7, screenX, screenY + gp.tileSize * 2, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(image8, screenX + gp.tileSize, screenY + gp.tileSize * 2, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(image9, screenX + gp.tileSize * 2, screenY + gp.tileSize * 2, gp.tileSize, gp.tileSize, null);
         }
     }
 }

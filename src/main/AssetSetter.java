@@ -91,19 +91,19 @@ public class AssetSetter {
         gp.npc[2].worldY = gp.tileSize * 25;
 
         // place moving tile in pool
-        gp.npc[5] = new MovingTile(gp, false, 3);
-        gp.npc[5].worldX = gp.tileSize * 35;
-        gp.npc[5].worldY = gp.tileSize * 61;
+        gp.npc[3] = new MovingTile(gp, false, 3);
+        gp.npc[3].worldX = gp.tileSize * 35;
+        gp.npc[3].worldY = gp.tileSize * 61;
 
         // place moving tile in pool
-        gp.npc[4] = new MovingTile(gp, false, 2);
+        gp.npc[4] = new MovingTile(gp, true, 2);
         gp.npc[4].worldX = gp.tileSize * 35;
         gp.npc[4].worldY = gp.tileSize * 63;
 
         // place moving tile in pool
-        gp.npc[3] = new MovingTile(gp, false, 1);
-        gp.npc[3].worldX = gp.tileSize * 35;
-        gp.npc[3].worldY = gp.tileSize * 65;
+        gp.npc[5] = new MovingTile(gp, false, 1);
+        gp.npc[5].worldX = gp.tileSize * 35;
+        gp.npc[5].worldY = gp.tileSize * 65;
 
     }
 }
